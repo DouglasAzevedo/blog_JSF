@@ -12,14 +12,14 @@ public class PapelUsuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_papelusuario")
+    @Column(name = "id_papelusuario")
     private Integer id;
 
-    @Column(name="ds_papel")
+    @Column(name = "ds_papel")
     private String papel;
 
     @OneToOne
-    @JoinColumn(name="ds_login")
+    @JoinColumn(name = "ds_login")
     private Usuario usuario;
 
 }

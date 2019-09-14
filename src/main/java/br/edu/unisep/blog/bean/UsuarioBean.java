@@ -1,5 +1,6 @@
 package br.edu.unisep.blog.bean;
 
+import br.edu.unisep.blog.dto.UsuarioDto;
 import br.edu.unisep.blog.entity.Usuario;
 import br.edu.unisep.blog.repository.UsuarioRepository;
 import lombok.Getter;
@@ -16,7 +17,7 @@ public class UsuarioBean implements Serializable {
     private UsuarioRepository repo;
 
     @Getter
-    private Usuario usuario;
+    private UsuarioDto usuario;
 
     @PostConstruct
     public void iniciar() {

@@ -5,49 +5,51 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-    <h:outputStylesheet library="css" name="bootstrap.css"/>
-    <h:outputStylesheet library="css" name="login.css"/>
-
-    <h:outputScript library="js" name="jquery.js"/>
-    <h:outputScript library="js" name="popper.js"/>
-    <h:outputScript library="js" name="bootstrap.js"/>
-
-    <title>Blog</title>
-
-</h:head>
-
 
 <f:view>
 
-    <div class="container">
+    <ui:composition template="/template/layout.xhtml">
+        <ui:define name="conteudo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>Novo Post</h3>
 
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h3>Novo Post</h3>
-
-                <h:form>
-                    <div class="form-group">
-                        <h:outputLabel for="titulo" value="Título:"/>
-                        <h:inputText id="titulo" styleClass="form-control"/>
+                        <h:form>
+                            <div class="form-group">
+                                <h:outputLabel for="titulo" value="Título:"/>
+                                <h:inputText id="titulo" styleClass="form-control"
+                                             value="#{novoPostBean.novoPost.titulo}"
+                                             required="true"
+                                             requiredMessage="Titulo é obrigatório."/>
+                                <h:message for="titulo" styleClass="small text-danger"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="conteudo" value="Conteúdo:"/>
+                                <h:inputTextarea id="conteudo" styleClass="form-control" rows="10"
+                                                 value="#{novoPostBean.novoPost.conteudo}"
+                                                 required="true"
+                                                 requiredMessage="Conteudo é obrigatório"/>
+                                <h:message for="conteudo" styleClass="small text-danger"/>
+                            </div>
+                            <div class="form-group">
+                                <h:outputLabel for="tags" value="Tags:"/>
+                                <h:inputText id="tags" styleClass="form-control"
+                                             value="#{novoPostBean.novoPost.tags}"
+                                             required="true"
+                                             requiredMessage="tag obrigatória"/>
+                                <h:message for="tags" styleClass="small text-danger"/>
+                            </div>
+                            <div class="btn-toolbar">
+                                <h:commandButton value="Salvar" styleClass="btn btn-primary"/>
+                                <h:commandButton value="Cancelar" styleClass="btn btn-outline-secondary ml-2"/>
+                            </div>
+                        </h:form>
                     </div>
-                    <div class="form-group">
-                        <h:outputLabel for="conteudo" value="Conteúdo:"/>
-                        <h:inputTextarea id="conteudo" styleClass="form-control" rows="10"/>
-                    </div>
-                    <div class="form-group">
-                        <h:outputLabel for="tags" value="Tags:"/>
-                        <h:inputText id="tags" styleClass="form-control"/>
-                    </div>
-                    <div class="btn-toolbar">
-                        <h:commandButton value="Salvar" styleClass="btn btn-primary"/>
-                        <h:commandButton value="Cancelar" styleClass="btn btn-outline-secondary ml-2"/>
-                    </div>
-                </h:form>
+                </div>
             </div>
-        </div>
-
-    </div>
+        </ui:define>
+    </ui:composition>
 
 </f:view>
 </html>
