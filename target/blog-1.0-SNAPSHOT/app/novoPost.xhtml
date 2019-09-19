@@ -41,8 +41,10 @@
                                 <h:message for="tags" styleClass="small text-danger"/>
                             </div>
                             <div class="btn-toolbar">
-                                <h:commandButton value="Salvar" styleClass="btn btn-primary"/>
-                                <h:commandButton value="Cancelar" styleClass="btn btn-outline-secondary ml-2"/>
+                                <h:commandButton value="Salvar" styleClass="btn btn-primary"
+                                                 action="#{novoPostBean.salvar}"/>
+                                <h:commandButton value="Cancelar" styleClass="btn btn-outline-secondary ml-2"
+                                                 action="home?faces-redirect=true" immediate="true"/>
                             </div>
                         </h:form>
                     </div>

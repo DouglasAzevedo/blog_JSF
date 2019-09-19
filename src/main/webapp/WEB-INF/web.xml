@@ -15,7 +15,7 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
-	<security-role>
+    <security-role>
 		<role-name>USER</role-name>
 	</security-role>
 

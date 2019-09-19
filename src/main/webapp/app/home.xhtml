@@ -10,20 +10,26 @@
     <ui:composition template="/template/layout.xhtml">
         <ui:define name="conteudo">
             <div class="container">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Sample post title
-                        </h5>
-                        <p class="small font-italic text-primary">20/09/2019 as 09:00h</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.</p>
-                        <p class="small">tag 1, tag 2, tag 3</p>
+                <ui:repeat value="#{listaPostBean.posts}" var="post">
+
+                    <div class="card" style="margin-bottom: 20px">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <h:link value="#{post.titulo}" styleClass="text-dark" outcome="post">
+                                    <f:param name="idPost" value="#{post.id}"/>
+                                </h:link>
+                            </h5>
+                            <p class="smal font-italic text-primary">
+                                <h:outputText value="#{post.data}">
+                                    <f:convertDateTime type="localDateTime"
+                                                       pattern="dd/MM/yyyy HH:mm"/>
+                                </h:outputText>
+                            </p>
+                            <p>#{post.conteudo}</p>
+                            <p class="small">#{post.tags}</p>
+                        </div>
                     </div>
-                </div>
+                </ui:repeat>
             </div>
         </ui:define>
     </ui:composition>
