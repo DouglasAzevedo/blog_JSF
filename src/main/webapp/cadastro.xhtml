@@ -22,8 +22,6 @@
         <h:form styleClass="form-cad" id="frmCadastro">
             <h3 class="titulo">blog | cadastro</h3>
 
-            <p>#{cadastroBean.novoCadastro}</p>
-
             <div class="form-group">
                 <h:outputLabel for="login" value="login:"/>
                 <h:inputText styleClass="form-control" id="login"
@@ -76,7 +74,7 @@
                                  action="#{cadastroBean.salvar}"/>
             </div>
             <div class="form-group">
-                <h:commandLink value="Voltar ao Login" action="index"/>
+                <h:commandLink value="Voltar ao Login" action="index?faces-redirect=true" immediate="true"/>
             </div>
         </h:form>
     </div>

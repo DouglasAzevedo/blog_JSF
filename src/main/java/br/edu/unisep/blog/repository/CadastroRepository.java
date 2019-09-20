@@ -11,25 +11,24 @@ public class CadastroRepository {
 
     private UsuarioDao dao = new UsuarioDao();
 
-    public void salvar(CadastroDto novoUsuarioDto) throws DaoException {
+    public void salvar(CadastroDto novoUsuario) throws DaoException {
 
-        var novoUsuario = new Usuario();
+        var usuario = new Usuario();
 
-        novoUsuario.setLogin(novoUsuarioDto.getLogin());
-        novoUsuario.setNome(novoUsuarioDto.getNome());
-        novoUsuario.setEmail(novoUsuarioDto.getEmail());
+        usuario.setLogin(novoUsuario.getLogin());
+        usuario.setNome(novoUsuario.getNome());
+        usuario.setEmail(novoUsuario.getEmail());
 
-        var senha = DigestUtils.md5Hex(novoUsuarioDto.getSenha());
-        novoUsuario.setSenha(senha);
+        var senha = DigestUtils.md5Hex(novoUsuario.getSenha());
+        usuario.setSenha(senha);
 
         var papel = new PapelUsuario();
 
         papel.setPapel("USER");
-        papel.setUsuario(novoUsuario);
+        papel.setUsuario(usuario);
+        usuario.setPapel(papel);
 
-        novoUsuario.setPapel(papel);
-
-        dao.save(novoUsuario);
+        dao.save(usuario);
     }
 
 }
