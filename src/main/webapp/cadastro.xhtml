@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="cadastro.css"/>
+
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="popper.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+</h:head>
+
+
+<f:view>
+
+    <div class="bg-cad">
+
+        <h:form styleClass="form-cad" id="frmCadastro">
+            <h3 class="titulo">blog | cadastro</h3>
+
+            <p>#{cadastroBean.novoCadastro}</p>
+
+            <div class="form-group">
+                <h:outputLabel for="login" value="login:"/>
+                <h:inputText styleClass="form-control" id="login"
+                             value="#{cadastroBean.novoCadastro.login}"
+                             required="true"
+                             requiredMessage="Login obrigatório"
+                />
+                <small>
+                    <h:message for="login" styleClass="text-danger"/>
+                </small>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="senha" value="Senha:"/>
+                <h:inputSecret styleClass="form-control" id="senha"
+                               value="#{cadastroBean.novoCadastro.senha}"
+                               required="true"
+                               requiredMessage="Senha obrigatória"
+                />
+                <small>
+                    <h:message for="senha" styleClass="text-danger"/>
+                </small>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="nome" value="nome:"/>
+                <h:inputText styleClass="form-control" id="nome"
+                             value="#{cadastroBean.novoCadastro.nome}"
+                             required="true"
+                             requiredMessage="Usuario obrigatório"
+                />
+                <small>
+                    <h:message for="nome" styleClass="text-danger"/>
+                </small>
+            </div>
+
+            <div class="form-group">
+                <h:outputLabel for="email" value="Email:"/>
+                <h:inputText styleClass="form-control" id="email"
+                             value="#{cadastroBean.novoCadastro.email}"
+                             required="true"
+                             requiredMessage="Email obrigatório"
+                />
+                <small>
+                    <h:message for="email" styleClass="text-danger"/>
+                </small>
+            </div>
+            <div class="form-group">
+                <h:commandButton value="Cadastrar" styleClass="btn btn-primary btn-block"
+                                 action="#{cadastroBean.salvar}"/>
+            </div>
+            <div class="form-group">
+                <h:commandLink value="Voltar ao Login" action="index"/>
+            </div>
+        </h:form>
+    </div>
+</f:view>
+</html>

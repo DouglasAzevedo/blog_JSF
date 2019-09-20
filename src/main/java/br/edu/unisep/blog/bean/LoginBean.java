@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestScoped
 public class LoginBean {
 
-    @Getter @Setter
+    @Getter
+    @Setter
     private LoginDto dadosLogin = new LoginDto();
 
     @Inject
@@ -53,6 +54,16 @@ public class LoginBean {
 
             return "login";
         }
+    }
+
+    public String sair() {
+        var req = (HttpServletRequest) externalContext.getRequest();
+        try {
+            req.logout();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        return "/index?faces-redirect=true";
     }
 
 }

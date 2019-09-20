@@ -15,16 +15,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <h:link styleClass="nav-link" value="Home" outcome="home"/>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Usuários</a>
+                        <h:link styleClass="nav-link" value="Usuarios" outcome="usuarios"/>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Meu Perfil</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Sair</a>
+                        <h:link styleClass="nav-link" value="Perfil" outcome="Perfil"/>
                     </li>
                 </ul>
             </div>
@@ -33,8 +30,11 @@
                     Olá, #{usuarioBean.usuario.nome} <br/>
                     #{usuarioBean.usuario.email} <br/>
                 </small>
-                <h:commandButton styleClass="btn btn-outline-info" value="Novo Post"
+                <h:commandButton styleClass="btn btn-outline-info mr-2" value="Novo Post"
                                  action="/app/novoPost.xhtml"/>
+
+                <h:commandButton styleClass="btn btn-outline-danger" value="Sair"
+                                 action="#{loginBean.sair}"/>
             </h:form>
         </div>
     </nav>
