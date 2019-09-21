@@ -13,7 +13,4 @@ public class ComentarioDto {
 
     private String login;
 
-    public ComentarioDto() {
-
-    }
 }

@@ -2,8 +2,7 @@ package br.edu.unisep.blog.bean;
 
 
 import br.edu.unisep.blog.dto.CadastroDto;
-import br.edu.unisep.blog.entity.Usuario;
-import br.edu.unisep.blog.repository.CadastroRepository;
+import br.edu.unisep.blog.repository.UsuarioRepository;
 import com.rcpadilha.hibernate.exception.DaoException;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,12 +18,12 @@ public class CadastroBean {
     @Getter
     private CadastroDto novoCadastro = new CadastroDto();
 
-    private CadastroRepository repo = new CadastroRepository();
+    private UsuarioRepository repo = new UsuarioRepository();
 
 
     public String salvar() {
         try {
-            repo.salvar(novoCadastro);
+            repo.salvarNovoUsuario(novoCadastro);
             return "/index?faces-redirect-true";
         } catch (DaoException e) {
             e.printStackTrace();

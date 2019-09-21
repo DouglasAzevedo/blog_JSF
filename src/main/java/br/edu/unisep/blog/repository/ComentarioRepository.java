@@ -35,7 +35,7 @@ public class ComentarioRepository {
 
     }
 
-    public List<ComentarioDto> listar(String post) {
+    public List<ComentarioDto> listar(Integer post) {
 
         var comentarios = dao.listaComentario(post);
 

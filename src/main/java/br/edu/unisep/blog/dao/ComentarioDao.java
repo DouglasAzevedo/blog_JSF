@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ComentarioDao extends HibernateDao<Comentario> {
 
-    public List<Comentario> listaComentario(String post) {
+    public List<Comentario> listaComentario(Integer post) {
         var session = HibernateSessionFactory.getSession();
-        var q = session.createQuery("from Comentario where comentario.post = :POST", Comentario.class);
+        var q = session.createQuery("from Comentario where post.id = :POST", Comentario.class);
         q.setParameter("POST", post);
 
         var lista = q.list();

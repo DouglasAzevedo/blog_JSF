@@ -40,15 +40,24 @@
                     </div>
                 </div>
 
+                <div class="card" style="margin-bottom: 20px">
+                    <div class="card-body">
+                        <p class="smal font-italic text-primary">
+                            #{visualizarPostBean.comentario.comentario}
+                        </p>
+                    </div>
+                </div>
+
                 <h:form styleClass="form-cad">
-                    <h:inputText styleClass="form-control" id="conteudo" value="#{listaPostBean.novoComentario.comentario}"/>
-                    <br/>
+                    <div class="form-group">
+                        <h:inputText styleClass="form-control" id="conteudo"
+                                     action="#{visualizarPostBean.comentario.comentario}"/>
+                    </div>
                     <div class="form-group">
                         <h:commandButton value="Enviar" styleClass="btn btn-primary btn-block" style="width: 100px"
-                        action="#{listaPostBean.novoComentario}"/>
+                                         action="#{visualizarPostBean.novoComentario}"/>
                     </div>
                 </h:form>
-
             </div>
         </ui:define>
     </ui:composition>
