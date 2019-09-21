@@ -28,7 +28,7 @@ public class CadastroBean {
             return "/index?faces-redirect-true";
         } catch (DaoException e) {
             e.printStackTrace();
-            return "fail";
+            return "Erro ao Cadastrar.";
         }
     }
 

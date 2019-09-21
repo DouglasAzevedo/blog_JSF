@@ -5,6 +5,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+<h:head>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="cadastro.css"/>
+
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="popper.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+</h:head>
+
 <f:view>
 
     <f:metadata>
@@ -18,9 +27,6 @@
                 <div class="card" style="margin-bottom: 20px">
                     <div class="card-body">
                         <h5 class="card-title">
-                            Sample post title
-                        </h5>
-                        <h5 class="card-title">
                             #{visualizarPostBean.post.titulo}
                         </h5>
                         <p class="smal font-italic text-primary">
@@ -33,6 +39,16 @@
                         <p class="small">#{visualizarPostBean.post.tags}</p>
                     </div>
                 </div>
+
+                <h:form styleClass="form-cad">
+                    <h:inputText styleClass="form-control" id="conteudo" value="#{listaPostBean.novoComentario.comentario}"/>
+                    <br/>
+                    <div class="form-group">
+                        <h:commandButton value="Enviar" styleClass="btn btn-primary btn-block" style="width: 100px"
+                        action="#{listaPostBean.novoComentario}"/>
+                    </div>
+                </h:form>
+
             </div>
         </ui:define>
     </ui:composition>
