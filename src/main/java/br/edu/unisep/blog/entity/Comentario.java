@@ -23,7 +23,7 @@ public class Comentario {
     @JoinColumn(name="ds_login")
     private Usuario usuario;
 
-    @Column(name="ds_conteudo")
+    @Column(name="ds_comentario")
     private String conteudo;
 
     @Column(name="dt_comentario")
