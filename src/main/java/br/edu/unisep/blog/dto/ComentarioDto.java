@@ -5,10 +5,12 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UsuarioDto {
+public class ComentarioDto {
+
+    private String comentario;
+
+    private Integer id_post;
 
     private String login;
-    private String email;
-    private String nome;
 
 }

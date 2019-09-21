@@ -2,6 +2,7 @@ package br.edu.unisep.blog.bean;
 
 import br.edu.unisep.blog.dto.PerfilDto;
 import br.edu.unisep.blog.repository.UsuarioRepository;
+import com.rcpadilha.hibernate.exception.DaoException;
 import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,8 +33,12 @@ public class PerfilBean {
 
     public String salvar() {
         perfilDto.setSenha(DigestUtils.md5Hex(perfilDto.getSenha()));
-        repo.editar(usuarioBean.getUsuario().getLogin() ,perfilDto);
-
-        return "/app/perfil?faces-redirect=true";
+        try {
+            repo.editar(usuarioBean.getUsuario().getLogin() ,perfilDto);
+            return "/app/perfil?faces-redirect=true";
+        } catch (DaoException e) {
+            e.printStackTrace();
+            return "/app/novoPerfil";
+        }
     }
 }

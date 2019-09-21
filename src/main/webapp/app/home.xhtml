@@ -7,21 +7,19 @@
 
 <f:view>
 
-    <ui:composition template="template/layout.xhtml">
+    <ui:composition template="/template/layout.xhtml">
         <ui:define name="conteudo">
-
             <div class="container">
-
                 <ui:repeat value="#{listaPostBean.posts}" var="post">
 
-                    <div class="card" style="margin-bottom: 15px">
+                    <div class="card" style="margin-bottom: 20px">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <h:link value="#{post.titulo}" styleClass="text-dark" outcome="post.xhtml">
+                                <h:link value="#{post.titulo}" styleClass="text-dark" outcome="post">
                                     <f:param name="idPost" value="#{post.id}"/>
                                 </h:link>
                             </h5>
-                            <p class="small font-italic text-primary">
+                            <p class="smal font-italic text-primary">
                                 <h:outputText value="#{post.data}">
                                     <f:convertDateTime type="localDateTime"
                                                        pattern="dd/MM/yyyy HH:mm"/>
@@ -31,11 +29,8 @@
                             <p class="small">#{post.tags}</p>
                         </div>
                     </div>
-
                 </ui:repeat>
-
             </div>
-
         </ui:define>
     </ui:composition>
 

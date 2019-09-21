@@ -1,14 +1,18 @@
 package br.edu.unisep.blog.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
-public class UsuarioDto {
+public class CadastroDto {
 
     private String login;
+
     private String email;
+
     private String nome;
+
+    private String senha;
+
+    private Integer papel;
 
 }

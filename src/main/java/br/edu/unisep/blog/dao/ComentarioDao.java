@@ -1,17 +1,17 @@
 package br.edu.unisep.blog.dao;
 
-import br.edu.unisep.blog.entity.Post;
+import br.edu.unisep.blog.entity.Comentario;
 import com.rcpadilha.hibernate.dao.HibernateDao;
 import com.rcpadilha.hibernate.factory.HibernateSessionFactory;
 
 import java.util.List;
 
-public class PostDao extends HibernateDao<Post> {
+public class ComentarioDao extends HibernateDao<Comentario> {
 
-    public List<Post> findByUsuario(String usuario) {
+    public List<Comentario> listaComentario(Integer post) {
         var session = HibernateSessionFactory.getSession();
-        var q = session.createQuery("from Post where usuario.login = :USUARIO", Post.class);
-        q.setParameter("USUARIO", usuario);
+        var q = session.createQuery("from Comentario where post.id = :POST", Comentario.class);
+        q.setParameter("POST", post);
 
         var lista = q.list();
 
@@ -19,7 +19,5 @@ public class PostDao extends HibernateDao<Post> {
 
         return lista;
     }
-
-    
 
 }

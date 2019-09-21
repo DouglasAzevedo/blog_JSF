@@ -1,8 +1,10 @@
 package br.edu.unisep.blog.bean;
 
+import br.edu.unisep.blog.dto.ComentarioDto;
 import br.edu.unisep.blog.dto.PostDto;
+import br.edu.unisep.blog.repository.ComentarioRepository;
 import br.edu.unisep.blog.repository.PostRepository;
-import jdk.jfr.Name;
+import com.rcpadilha.hibernate.exception.DaoException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,17 +18,22 @@ import java.util.List;
 @RequestScoped
 public class ListaPostBean {
 
+    // usuario logado
     @Inject
-    private UsuarioBean usuario;
+    private UsuarioBean usuarioBean;
 
-    private PostRepository postRepository;
+    private PostRepository repo;
 
-    @Getter @Setter
+    //lista dos posts do banco
+    @Getter
+    @Setter
     private List<PostDto> posts;
 
+
     @PostConstruct
-    public void iniciar(){
-        this.postRepository = new PostRepository();
-        this.posts = postRepository.listar(usuario.getUsuario().getLogin());
+    public void iniciar() {
+        this.repo = new PostRepository();
+        this.posts = repo.listar(usuarioBean.getUsuario().getLogin());
     }
+
 }
