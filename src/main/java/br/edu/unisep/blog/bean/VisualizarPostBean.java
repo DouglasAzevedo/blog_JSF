@@ -10,12 +10,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
 @Named
 @RequestScoped
 public class VisualizarPostBean {
+
+    @Inject
+    private UsuarioBean usuarioBean;
 
     @Getter
     @Setter
@@ -29,6 +33,7 @@ public class VisualizarPostBean {
     @Setter
     private ComentarioDto comentario;
 
+    // lista dos comentarios de acordo com o post.
     @Getter
     @Setter
     private List<ComentarioDto> comentarios;
@@ -36,8 +41,6 @@ public class VisualizarPostBean {
     private PostRepository repo;
 
     private ComentarioRepository cepo;
-
-
 
 
     public void iniciar() {
@@ -48,8 +51,9 @@ public class VisualizarPostBean {
         this.post = repo.consultar(idPost);
     }
 
-        public String novoComentario() {
+    public String novoComentario() {
         try {
+            comentario.setLogin(usuarioBean.getUsuario().getLogin());
             cepo.salvar(comentario);
             return "/post?faces-redirect-true";
         } catch (DaoException e) {
