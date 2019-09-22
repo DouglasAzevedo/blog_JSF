@@ -9,6 +9,9 @@ import br.edu.unisep.blog.entity.Usuario;
 import com.rcpadilha.hibernate.exception.DaoException;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UsuarioRepository {
 
     private UsuarioDao dao = new UsuarioDao();
@@ -54,6 +57,18 @@ public class UsuarioRepository {
         var usuario = dao.findByLogin(login);
 
         return new PerfilDto(usuario.getNome(), usuario.getEmail());
+    }
+
+    public List<UsuarioDto> listar(String loginAtual) {
+        var usuarios = dao.listar(loginAtual);
+
+        var retorno = new ArrayList<UsuarioDto>();
+
+        usuarios.forEach( u -> {
+            retorno.add(new UsuarioDto(u.getLogin(), u.getEmail(), u.getNome()));
+        });
+
+        return retorno;
     }
 
 }

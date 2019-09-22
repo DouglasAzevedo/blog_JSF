@@ -5,24 +5,31 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+<h:head>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="cadastro.css"/>
+
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="popper.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
+</h:head>
+
 <f:view>
 
     <f:metadata>
         <f:viewParam name="idPost" value="#{visualizarPostBean.idPost}"/>
-        <f:event listener="#{visualizarPostBean.iniciar}" type="preRenderView"/>
+        <f:event listener="#{visualizarPostBean.iniciar}" type="preRenderView"></f:event>
     </f:metadata>
 
-    <ui:composition template="template/layout.xhtml">
+    <ui:composition template="/template/layout.xhtml">
         <ui:define name="conteudo">
-
             <div class="container">
-
-                <div class="card">
+                <div class="card" style="margin-bottom: 20px">
                     <div class="card-body">
                         <h5 class="card-title">
                             #{visualizarPostBean.post.titulo}
                         </h5>
-                        <p class="small font-italic text-primary">
+                        <p class="smal font-italic text-primary">
                             <h:outputText value="#{visualizarPostBean.post.data}">
                                 <f:convertDateTime type="localDateTime"
                                                    pattern="dd/MM/yyyy HH:mm"/>
@@ -33,8 +40,25 @@
                     </div>
                 </div>
 
-            </div>
+                <div class="card" style="margin-bottom: 20px">
+                    <div class="card-body">
+                        <p class="smal font-italic text-primary">
+                            #{visualizarPostBean.comentario.comentario}
+                        </p>
+                    </div>
+                </div>
 
+                <h:form styleClass="form-cad">
+                    <div class="form-group">
+                        <h:inputText styleClass="form-control" id="conteudo"
+                                     action="#{visualizarPostBean.comentario.comentario}"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Enviar" styleClass="btn btn-primary btn-block" style="width: 100px"
+                                         action="#{visualizarPostBean.novoComentario}"/>
+                    </div>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

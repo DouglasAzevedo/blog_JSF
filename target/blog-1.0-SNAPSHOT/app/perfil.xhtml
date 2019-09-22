@@ -12,8 +12,8 @@
 
             <div class="container">
                 <div class="card">
-                    <div class="row">
-                        <div class="card-body">
+                    <div class="card-body">
+                        <div class="row">
                             <div class="col align-self-center">
                                 <h4 class="card-title">
                                     #{perfilBean.perfilDto.nome}
@@ -22,11 +22,11 @@
                                     #{perfilBean.perfilDto.email}
                                 </p>
                             </div>
+                            <h:form styleClass="col col-lg-1 mr-5 align-self-center">
+                                <h:commandButton value="Editar" styleClass="btn btn-primary"
+                                                 action="/app/novoPerfil.xhtml"/>
+                            </h:form>
                         </div>
-                        <h:form styleClass="col col-lg-1 mr-5 align-self-center">
-                            <h:commandButton value="Editar" styleClass="btn btn-primary"
-                                             action="/app/novoPerfil.xhtml"/>
-                        </h:form>
                     </div>
                 </div>
             </div>
