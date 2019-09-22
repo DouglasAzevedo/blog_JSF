@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <ui:composition template="template/layout.xhtml">
+        <ui:define name="conteudo">
+            <div class="container">
+                <ui:repeat value="#{listaUsuariosBean.usuarios}" var="usu">
+
+                    <div class="card" style="margin-bottom: 20px">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <h:link value="#{usu.nome}" styleClass="text-dark" outcome="postsUsuario">
+                                    <f:param name="idUsuario" value="#{usu.login}"/>
+                                </h:link>
+                            </h5>
+                            <p>#{usu.email}</p>
+                        </div>
+                    </div>
+                </ui:repeat>
+            </div>
+        </ui:define>
+    </ui:composition>
+</f:view>
+</html>
