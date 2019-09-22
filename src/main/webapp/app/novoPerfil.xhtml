@@ -12,21 +12,24 @@
                 <h:form>
                     <div class="form-group">
                         <label>Nome:</label>
-                        <h:inputText type="text" class="form-control" value="#{perfilBean.perfilDto.nome}">
+                        <h:inputText type="text" class="form-control" value="#{perfilBean.perfilDto.nome}"
+                                     required="true" requiredMessage="Preencher o seu nome é obrigatório.">
                             <f:passThroughAttribute name="placeholder" value="Preencha seu nome" />
                         </h:inputText>
                         <small class="form-text text-muted">Por favor preencha com seu nome.</small>
                     </div>
                     <div class="form-group">
                         <label>Email:</label>
-                        <h:inputText type="email" class="form-control" value="#{perfilBean.perfilDto.email}">
+                        <h:inputText type="email" class="form-control" value="#{perfilBean.perfilDto.email}"
+                                     required="true" requiredMessage="Preencher o email é obrigatório.">
                             <f:passThroughAttribute name="placeholder" value="Preencha seu email" />
                         </h:inputText>
                         <small class="form-text text-muted">Por favor preencha seu email</small>
                     </div>
                     <div class="form-group">
                         <label>Senha:</label>
-                        <h:inputText type="password" class="form-control" value="#{perfilBean.perfilDto.senha}">
+                        <h:inputText type="password" class="form-control" value="#{perfilBean.perfilDto.senha}"
+                                     required="true" requiredMessage="Preencher a senha é obrigatório.">
                             <f:passThroughAttribute name="placeholder" value="Preencha sua senha" />
                         </h:inputText>
                         <small class="form-text text-muted">Por favor preencha com sua senha</small>
