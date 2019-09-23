@@ -2,7 +2,7 @@
 
 <Context antiJARLocking="true" path="blog">
 	<Realm className="org.apache.catalina.realm.JDBCRealm" 
-            debug="4"
+            debug="9"
             driverName="org.postgresql.Driver"
             connectionURL="jdbc:postgresql://localhost:5432/blog"
             connectionName="postgres"
