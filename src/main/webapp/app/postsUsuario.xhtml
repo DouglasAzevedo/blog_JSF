@@ -15,6 +15,7 @@
         <ui:define name="conteudo">
 
             <div class="container">
+                <h5 class="row justify-content-end" style="color: #17a2b8">Post's de #{visualizarUsuarioBean.usuario.nome}</h5>
                 <ui:repeat value="#{visualizarUsuarioBean.posts}" var="post">
 
                     <div class="card" style="margin-bottom: 20px">

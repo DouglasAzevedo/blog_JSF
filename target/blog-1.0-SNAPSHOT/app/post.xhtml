@@ -39,19 +39,21 @@
                         <p class="small">#{visualizarPostBean.post.tags}</p>
                     </div>
                 </div>
-
-                <div class="card" style="margin-bottom: 20px">
-                    <div class="card-body">
-                        <p class="smal font-italic text-primary">
-                            #{visualizarPostBean.comentario.comentario}
-                        </p>
-                    </div>
+                <div class="card-body">
+                    <ui:repeat value="#{visualizarPostBean.comentarios}" var="c">
+                        <div class="card" style="margin-bottom: 20px">
+                            <h6>#{c.login}</h6>
+                            <p>#{c.comentario}</p>
+                        </div>
+                    </ui:repeat>
                 </div>
 
                 <h:form styleClass="form-cad">
                     <div class="form-group">
                         <h:inputText styleClass="form-control" id="conteudo"
-                                     action="#{visualizarPostBean.comentario.comentario}"/>
+                                     action="#{visualizarPostBean.comentario.comentario}">
+                            <f:passThroughAttribute name="placeholder" value="Escreva um comentário."/>
+                        </h:inputText>
                     </div>
                     <div class="form-group">
                         <h:commandButton value="Enviar" styleClass="btn btn-primary btn-block" style="width: 100px"
