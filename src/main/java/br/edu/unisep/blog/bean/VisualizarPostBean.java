@@ -2,13 +2,13 @@ package br.edu.unisep.blog.bean;
 
 import br.edu.unisep.blog.dto.ComentarioDto;
 import br.edu.unisep.blog.dto.PostDto;
-import br.edu.unisep.blog.entity.Comentario;
 import br.edu.unisep.blog.repository.ComentarioRepository;
 import br.edu.unisep.blog.repository.PostRepository;
 import com.rcpadilha.hibernate.exception.DaoException;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -31,22 +31,18 @@ public class VisualizarPostBean {
 
     @Getter
     @Setter
-    private ComentarioDto comentario;
+    private ComentarioDto comentario = new ComentarioDto();
 
     // lista dos comentarios de acordo com o post.
     @Getter
     @Setter
     private List<ComentarioDto> comentarios;
 
-    private PostRepository repo;
+    private PostRepository repo = new PostRepository();
 
-    private ComentarioRepository cepo;
-
+    private ComentarioRepository cepo = new ComentarioRepository();
 
     public void iniciar() {
-        this.repo = new PostRepository();
-        this.cepo = new ComentarioRepository();
-
         this.comentarios = cepo.listar(idPost);
         this.post = repo.consultar(idPost);
     }
@@ -54,6 +50,7 @@ public class VisualizarPostBean {
     public String novoComentario() {
         try {
             comentario.setLogin(usuarioBean.getUsuario().getLogin());
+            comentario.setIdPost(idPost);
             cepo.salvar(comentario);
             return "/post?faces-redirect-true";
         } catch (DaoException e) {
