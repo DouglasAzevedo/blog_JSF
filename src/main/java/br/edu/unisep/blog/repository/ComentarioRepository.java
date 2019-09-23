@@ -1,7 +1,6 @@
 package br.edu.unisep.blog.repository;
 
 import br.edu.unisep.blog.dao.ComentarioDao;
-import br.edu.unisep.blog.dao.PostDao;
 import br.edu.unisep.blog.dto.ComentarioDto;
 import br.edu.unisep.blog.entity.Comentario;
 import br.edu.unisep.blog.entity.Post;
@@ -24,11 +23,11 @@ public class ComentarioRepository {
         usuario.setLogin(comentario.getLogin());
 
         var post = new Post();
-        post.setId(comentario.getId_post());
+        post.setId(comentario.getIdPost());
 
         coment.setPost(post);
         coment.setUsuario(usuario);
-        coment.setConteudo(comentario.getComentario());
+        coment.setConteudo(comentario.getConteudo());
         coment.setData(LocalDateTime.now());
 
         dao.save(coment);
